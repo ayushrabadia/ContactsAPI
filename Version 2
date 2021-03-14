@@ -1,0 +1,35 @@
+import flask
+from flask import request, jsonify
+
+contacts = [
+  {"id": 0,
+  "Name": "Ayush Rabadia", 
+  "Email": "ayushrabadia@icloud.com", 
+  "Phone Number": "07871533473"},
+  {"id": 1,
+  "Name": "John Smith", 
+  "Email": "johnsmith@icloud.com", 
+  "Phone Number": "01234567890"},
+  {"id": 2,
+  "Name": "Richard Hil", 
+  "Email": "richardhill@icloud.com", 
+  "Phone Number": "09876543421"},
+  {"id": 3,
+  "Name": "Adam Wells", 
+  "Email": "adamwells@icloud.com", 
+  "Phone Number": "02468135790"}]
+
+
+api = flask.Flask(__name__)
+api.config["DEBUG"] = True
+
+@api.route('/contacts', methods=['GET'])
+def get_contacts():
+  return jsonify(contacts)
+
+@api.route('/', methods=['GET'])
+def home_page():
+  return "<h1>Welcome to the Contacts Book</h1><p>On this website, you will be able view contacts and all the details</p>"
+
+if __name__ == '__main__':
+    api.run()
