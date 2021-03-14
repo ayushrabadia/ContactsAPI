@@ -1,0 +1,12 @@
+from flask import Flask, json
+
+contacts = [{"Name": "Ayush Rabadia", "Email": "ayushrabadia@icloud.com", "Phone Number": "07871533473"}]
+
+api = Flask(__name__)
+
+@api.route('/contacts', methods=['GET'])
+def get_contacts():
+  return json.dumps(contacts)
+
+if __name__ == '__main__':
+    api.run()
